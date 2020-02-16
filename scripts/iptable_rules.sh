@@ -21,7 +21,7 @@ echo 1 >| /proc/sys/net/ipv4/ip_forward # Actually, i don't know whether i need 
 echo 0 >| /proc/sys/net/ipv4/conf/all/rp_filter
 
 iptables -t mangle -I OUTPUT -p tcp --dport 80 -j MARK --set-mark 1
-iptables -t nat -A OUTPUT -p tcp --dport 80 -j MASQUERADE
+iptables -t nat -A POSTROUTING -p tcp --dport 80 -j MASQUERADE
 
 if ! cat /etc/iproute2/rt_tables | grep -q '^251'
 then

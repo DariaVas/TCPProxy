@@ -1,7 +1,18 @@
 TEMPLATE = app
-CONFIG += console c++11
+CONFIG += c++11 console
 CONFIG -= app_bundle
 CONFIG -= qt
+CONFIG += -std c++11
 
-SOURCES += main.cpp
+INCLUDEPATH += /usr/lib/boost_1_72_0
+
+LIBS += -L/usr/lib/boost_1_72_0 -lpthread
+
+SOURCES += main.cpp \
+    network_utils.cpp \
+    LocalClient.cpp
+
+HEADERS += \
+    network_utils.h \
+    LocalClient.h
 
